@@ -1,14 +1,59 @@
 package org.example;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.GregorianCalendar ;
+import java.time.temporal.ValueRange;
+
 
 
 public class Main {
     public static void main(String[] args) {
-        ex2();
-        ex3();
+        //ex2();
+        //ex3();
+        ex4_1(ex4());
+        ex5();
+    }
+
+    private static void ex5() {
+
+        try(PrintWriter pw = new PrintWriter("Test.txt")) {
+            pw.print("OneHundredTimesTest".repeat(100));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private static void ex4_1(String word) {
+
+        word = word.toLowerCase();
+        int i = 0;
+        int j = word.length() - 1;
+        boolean paly = false ;
+        while (i < j) {
+            paly = (word.charAt(i) == word.charAt(j));
+            i++;
+            j--;
+        }
+        // это следует оставить так или всё простое следуте сводить в одну строку по возможности?
+        System.out.println(word +" is "+  paly + " palindrome");
+
+    }
+
+    private static String ex4() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("check for a palindrome \n");
+        String word = scanner.nextLine();
+        scanner.close();
+
+        return word;
+
     }
 
     private static void ex3() {
