@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.GregorianCalendar ;
-import java.time.temporal.ValueRange;
+ import java.time.temporal.ValueRange;
 
 
 
@@ -21,15 +21,15 @@ public class Main {
 
     private static void ex5() {
 
-        try(PrintWriter pw = new PrintWriter("Test.txt")) {
-            pw.print("OneHundredTimesTest".repeat(100));
+        try(PrintWriter pw = new PrintWriter("OneHundredTimesTest.txt")) {
+            pw.print("Test".repeat(100));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    private static void ex4_1(String word) {
+    private static boolean ex4_1(String word) {
 
         word = word.toLowerCase();
         int i = 0;
@@ -42,6 +42,8 @@ public class Main {
         }
         // это следует оставить так или всё простое следуте сводить в одну строку по возможности?
         System.out.println(word +" is "+  paly + " palindrome");
+
+        return  paly ;
 
     }
 
