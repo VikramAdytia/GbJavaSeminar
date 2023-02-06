@@ -11,15 +11,12 @@ public class Lesson5SelfStudy {
 
         try {
 
-
             Map<String, String[]> phoneBook = new HashMap<>();
             File myObj = new File("namesAndSurnames.txt");
             Scanner myReader = new Scanner(myObj);
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                //System.out.println(data);
-                String[] splitData = data.split(" ");
                 String[] tempPhones = {numberGenerator(), numberGenerator()};
                 phoneBook.put(data,tempPhones);
             }
@@ -72,15 +69,14 @@ public class Lesson5SelfStudy {
     }
 
     public static void sortName(Map<String, Integer> map){
-        Map<Integer, ArrayList<String>> sortMap = new HashMap<>();
         ArrayList<Integer> listCount = new ArrayList<>();
         for(var item: map.entrySet()) {
-            if (listCount.contains(item.getValue()) == false) listCount.add(item.getValue());
+            if (!listCount.contains(item.getValue())) listCount.add(item.getValue());
         }
         listCount.sort(null);
         for (int i = listCount.size()-1; i > -1; i--){
             for (var item: map.entrySet()){
-                if (listCount.get(i) == item.getValue()) System.out.printf("%s : %d \n", item.getKey(), item.getValue());
+                if (Objects.equals(listCount.get(i), item.getValue())) System.out.printf("%s : %d \n", item.getKey(), item.getValue());
             }
         }
     }
@@ -95,8 +91,6 @@ public class Lesson5SelfStudy {
         num2 = generator.nextInt (643) + 100;
         num3 = generator.nextInt (9000) + 1000;
 
-        String number = (num1+"-"+num2+"-"+num3);
-        //System.out.println(number);
-        return number;
+        return (num1+"-"+num2+"-"+num3);
     }
 }
