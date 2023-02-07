@@ -66,6 +66,32 @@ public class Lesson5SelfStudy {
 
         sortName(repeat);
 
+        heapSort(repeat);
+
+
+    }
+
+    private static void heapSort(Map<String, Integer> repeat) {
+        /*for (String character : repeat.keySet()) {
+            System.out.println(character);
+            System.out.println(repeat.get(character));
+
+        }*/
+
+        PriorityQueue<String> heap = new PriorityQueue<>((a, b) -> (repeat.get(b) - repeat.get(a)));
+        heap.addAll(repeat.keySet());
+
+        StringBuilder sb = new StringBuilder();
+        while (!heap.isEmpty()) {
+            String c = heap.poll();
+            for (int i = 0; i < repeat.get(c); i++) {
+                sb.append(c);
+            }
+        }
+
+        System.out.println("heapsort");
+
+        System.out.println(sb);
     }
 
     public static void sortName(Map<String, Integer> map){
